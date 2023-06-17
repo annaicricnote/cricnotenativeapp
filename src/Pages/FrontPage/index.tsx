@@ -5,49 +5,46 @@
  * @format
  */
 
-import React, { useState } from 'react';
-import  FormBuilder  from "./FormBuilder/index"
-import { LoginFields } from "./static/index"
-
+import  FormBuilder  from "../../shared/FormBuilder/index"
+import { LoginFields } from "../../shared/static/index"
+import Buttoncomponent from "../../shared/Buttoncomponent/index"
 
 
 import {
   ScrollView,
   StyleSheet,
   Text,
-  View,
-  TextInput, TouchableOpacity
+  View,  
 } from 'react-native';
 
 
 function Frontpage({navigation}:any): JSX.Element {
 
-  const [text, setText] = useState('');
+  const onBtnClick = () =>{
+      navigation.navigate("profile")
+  }
   
   return (
-
-    <ScrollView style={styles.maincontainer}>
+    <ScrollView>
+    <View style={styles.maincontainer}>
       <Text style={styles.container}>cricnote</Text>
-
       <View style={styles.whitebg}>
-      <FormBuilder fields={LoginFields} />
-        <TouchableOpacity style={styles.button}  onPress={() => navigation.navigate("Home")}>
-          <Text style={styles.btnText} >Submit</Text>
-        </TouchableOpacity>
+        <FormBuilder fields={LoginFields} /> 
+        <Buttoncomponent buttonName={"Submit"} onPressChild={onBtnClick}/>
       </View>
+    </View>
     </ScrollView>
-
-    
   );
 }
 
 const styles = StyleSheet.create({
   maincontainer: {
-    flex: 1,
-    backgroundColor: '#6A5BE2',
+    flex:1,
+    backgroundColor: '#6A5BE2',   
+    justifyContent:'space-evenly',
   },
-  container: {
-    height: 360,
+  container: {   
+    flex:1,
     fontFamily: 'Roboto Flex',
     textAlign: 'center',
     fontSize: 30,
@@ -55,18 +52,19 @@ const styles = StyleSheet.create({
     lineHeight: 35.16,
     textAlignVertical: 'center',
     color: 'white',
-
+    height:340,
   },
   whitebg: {
+    flex:2,
     borderTopLeftRadius: 100,
-    backgroundColor: '#FFFF',
-    height: 322,
+    backgroundColor: '#FFFF',    
     borderColor: 'black',
     paddingRight: 30,
     paddingLeft: 30,
     paddingTop: 110,
     fontSize: 18,
     fontWeight: '400',
+    height:340,
   },
   label: {
 
