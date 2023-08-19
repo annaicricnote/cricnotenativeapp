@@ -10,32 +10,23 @@ import {
   View,
   TouchableOpacity
 } from 'react-native';
-import React, { useState } from 'react';
 import FormBuilder from '../../shared/FormBuilder';
-import { Profileinfo } from '../../shared/static';
+import { TeamcreateFields } from '../../shared/static';
+// import Buttoncomponent from "../../shared/Buttoncomponent/index"
 import Buttoncomponent from '../../shared/Buttoncomponent';
 
-export default function Profile({ navigation }: any): JSX.Element {
-
-  const [values, setValues] = useState({});
-  const clicknextBtn = () =>{
-    navigation.navigate("myteam")
-    console.log("gghhh")
-}
-
-const onChangeInput = (e: any) => {
-  const name = e.target.name;
-  const value = e.target.value;
-  setValues({ ...values, [name]: value })
+export default function Createteam({ navigation }: any): JSX.Element {
+  const clickcreateteamSBtn = () =>{
+   
 }
 
   return (
     <View>
       <View style={styles.whitebg}>
-        <FormBuilder fields={Profileinfo} onChangeInput={onChangeInput} />
-        <View>
-            <Buttoncomponent buttonName={"Next"} onPressChild={clicknextBtn}/>
-        </View>
+        <FormBuilder fields={TeamcreateFields}  />
+        <TouchableOpacity style={styles.button}  >
+        <Buttoncomponent buttonName={"Create Team"} onPressChild={clickcreateteamSBtn}/>
+        </TouchableOpacity>
       </View></View>
 
   );

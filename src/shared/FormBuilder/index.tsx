@@ -17,9 +17,8 @@ import {
 
 
 function FormBuilder({...props}): JSX.Element {
-  const { fields } = props;
-  const [text, setText] = useState('');
-  const onPress = () => { };
+  const { fields, onChangeInput} = props;
+
   return (
     fields && fields.map((item:any,index:number)=>{
       return <View>
@@ -29,8 +28,7 @@ function FormBuilder({...props}): JSX.Element {
       { item.type === "text" ?  <View style={styles.inputBox}>
       <TextInput
         placeholder={item.placeholder}
-        onChangeText={newText => setText(newText)}
-        defaultValue={text}
+        onChange={onChangeInput}        
       />
       </View> : null }
       </View>

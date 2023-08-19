@@ -7,13 +7,23 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+     "dev-android":"react-native run-android --mode=devDebug --appIdSuffix=dev",
+     "dev-android-release-variant":"react-native run-android --mode=devRelease --appIdSuffix=dev",
+     "dev-android-release":"cd android && gradlew assembleDevRelease",
+     "live-android":"react-native run-android --mode=liveDebug --appIdSuffix=live",
+     "live-android-release-variant":"react-native run-android --mode=liveRelease --appIdSuffix=live",
+     "live-android-release":"cd android && gradlew assembleLiveRelease"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "@rneui/base": "^4.0.0-rc.7",
+    "@rneui/themed": "^4.0.0-rc.7",
     "react": "18.2.0",
     "react-native": "0.71.11",
+    "react-native-check-box": "^2.1.7",
+    "react-native-config": "^1.5.1",
     "react-native-safe-area-context": "^4.5.3",
     "react-native-screens": "^3.21.0",
     "react-navigation": "^4.4.4"
