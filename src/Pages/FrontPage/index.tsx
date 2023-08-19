@@ -8,8 +8,8 @@
 import  FormBuilder  from "../../shared/FormBuilder/index"
 import { LoginFields } from "../../shared/static/index"
 import Buttoncomponent from "../../shared/Buttoncomponent/index"
-
-
+import Config from "react-native-config";
+import React, { useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -19,17 +19,23 @@ import {
 
 
 function Frontpage({navigation}:any): JSX.Element {
-
+  const [values, setValues] = useState({});
   const onBtnClick = () =>{
       navigation.navigate("profile")
   }
   
+const onChangeInput = (e: any) => {
+  const name = e.target.name;
+  const value = e.target.value;
+  setValues({ ...values, [name]: value })
+}
+
   return (
     <ScrollView>
     <View style={styles.maincontainer}>
-      <Text style={styles.container}>cricnote</Text>
+      <Text style={styles.container}>cricnote {Config.BASEURL} </Text>
       <View style={styles.whitebg}>
-        <FormBuilder fields={LoginFields} /> 
+        <FormBuilder fields={LoginFields} onChangeInput={onChangeInput}/> 
         <Buttoncomponent buttonName={"Submit"} onPressChild={onBtnClick}/>
       </View>
     </View>

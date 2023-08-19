@@ -1,5 +1,19 @@
+
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
+
+
+project.ext.envConfigFiles = [
+    release:".env.dev",
+    debug:".env.dev",
+    devdebug:".env.dev",
+    devrelease:".env.dev",
+    livedebug:".env.live",
+    liverelease:".env.live"
+]
+
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
 
 import com.android.build.OutputFile
 
@@ -91,7 +105,23 @@ def reactNativeArchitectures() {
 android {
     ndkVersion rootProject.ext.ndkVersion
 
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdkVersion rootProject.ext.compileSdkVersion   
+    flavorDimensions "default"
+
+    productFlavors {
+        dev {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'com.awesomeproject.dev'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.awesomeproject"
+        }
+        live {
+            minSdkVersion rootProject.ext.minSdkVersion
+            applicationId 'com.awesomeproject.live'
+            targetSdkVersion rootProject.ext.targetSdkVersion
+            resValue "string", "build_config_package", "com.awesomeproject"
+        }
+    }
 
     namespace "com.awesomeproject"
     defaultConfig {

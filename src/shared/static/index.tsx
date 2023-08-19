@@ -28,6 +28,8 @@ export const LoginFields = [
         placeholder: "Enter phone name",
     }
 ]
+
+
 export const TeamcreateFields = [
     {
         type: "text",
